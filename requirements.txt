@@ -1,10 +1,2 @@
-requests 
-random
-pip install time, localtime
-pip install cityinfo
-pip install datetime
-pip install sys
-pip install os
-pip install http.client, urllib
-pip install json
-pip install ZhDate
+requests==2.28.1
+zhdate==0.1
