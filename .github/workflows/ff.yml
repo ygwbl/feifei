@@ -1,0 +1,46 @@
+name: run
+on:
+  schedule:
+    - cron: "0 22 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+  steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests  |
+        pip install random    |
+        pip install time, localtime  |
+        pip install cityinfo |
+        pip install datetime |
+        pip install sys |
+        pip install os |
+        pip install http.client, urllib |
+        pip install json |
+        pip install ZhDate |
+            - name: Update ff
+      run: |
+        cd ff
+        sh run.bat
+            - name: Commit
+      run: |
+        git config --global user.email nzjuni@outlook.com
+        git config --global user.name ygwbl
+        git add .
+        git commit -m"action:`date`"
+        git pull --rebase
+            - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
